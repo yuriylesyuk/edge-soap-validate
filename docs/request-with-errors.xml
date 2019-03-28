@@ -1,0 +1,33 @@
+<SOAP-ENV:Envelope
+        xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+        <SOAP-ENV:Header>
+                <v3:integrationHeader
+                        xmlns:v3="http://www.royalmailgroup.com/integration/core/V3">
+                        <!--Optional: -->
+                        <dateTime>2008-09-29T01:49:45</dateTime>
+                        <!--Optional: -->
+                        <version>1000.00</version>
+                        <identification>
+                                <!--Optional: -->
+                                <endUserId>string</endUserId>
+                                <!--Optional: -->
+                                <clientId>*****</clientId>
+                                <applicationId>****</applicationId>
+                                <!--Optional: -->
+                                <intermediaryId>*****</intermediaryId>
+                                <transactionId>*****</transactionId>
+                        </identification>
+                        <!--Optional: -->
+                        <debugAudit>
+                                <!--Optional: -->
+                                <testFlag>true</testFlag>
+                                <!--Optional: -->
+                                <debugFlag>true</debugFlag>
+                                <!--Optional: -->
+                                <performanceFlag>true</performanceFlag>
+                                <!--Optional: -->
+                                <messageAuditFlag>true</messageAuditFlag>
+                        </debugAudit>
+                </v3:integrationHeader>
+        </SOAP-ENV:Header>
+        <SOAP-ENV:Body>

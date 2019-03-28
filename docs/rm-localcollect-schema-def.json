@@ -1,0 +1,13 @@
+{
+    "schemas": [ 
+        { "file": "localcollect_messages/localCollectAPIMessagesV2_1.xsd", "content": "localcollect_messages--localCollectAPIMessagesV2_1.xsd" },
+        { "file": "localcollect_types/localCollectAPITypesV2_1.xsd", "content": "localcollect_types--localCollectAPITypesV2_1.xsd" },
+        
+        { "file": "rmg_commons/ReferenceDataV4.2.xsd", "content": "rmg_commons--ReferenceDataV4.2.xsd" },
+        { "file": "rmg_commons/DatatypesV4_2.xsd", "content": "rmg_commons--DatatypesV4_2.xsd" },
+        { "file": "rmg_commons/CommonIntegrationSchemaV3_0.xsd", "content": "rmg_commons--CommonIntegrationSchemaV3_0.xsd" },
+            
+        { "file": "LocalCollectAPIv2_1.wsdl", "content": "LocalCollectAPIv2_1.wsdl" }
+    ],
+    "wsdl": "LocalCollectAPIv2_1.wsdl"
+}

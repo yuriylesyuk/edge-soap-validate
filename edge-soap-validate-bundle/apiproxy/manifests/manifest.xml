@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Manifest name="manifest">
+    <Policies>
+        <VersionInfo resourceName="Assign-Message-1" version="SHA-512:46c7654399788fe16eaf73a0b026f479fe9e1271199daf362ecd0b6afd0b675771f9647457704e48aa9aec8510f259bae17bb801c229123f9724ffe594ff986f"/>
+        <VersionInfo resourceName="Assign-Message-2" version="SHA-512:c6e3ff6a4f034c0749ec34089fb0c8777159786e1473f61384efce33740157ba3edf759089b1f32a8b8bbf47d534a74eea7e515bc961008072e797e3138b71bb"/>
+        <VersionInfo resourceName="JavaCallout.SOAPValidate" version="SHA-512:206019b7a3400d8301102b0fcfc44261d557ebed72cedbb3fc4cc2c8957609fdd2224a5bd48ac337353759d31b36e8bdf0a03653869aabb4fd8b544b76c1b700"/>
+        <VersionInfo resourceName="JavaScriptProcessSchemas" version="SHA-512:543a7d8c5f41e91a1d0a628c42b9fb9d71fca2019a02acc6d133526b347d1169ede0c2be855b81cba0552dd079797e70e28063a4167dd9c7d2329429c3abe95e"/>
+        <VersionInfo resourceName="KeyValueMapOperations.GetSchemaDef" version="SHA-512:fe1170eb3e1229ef06d2f78b4a16ff1f9daf3ae1a18d4446c45777bd9699f07ba070f588e67978244b393def39af6c0ae5910a178ae87849ce1d9f9247cdae9f"/>
+        <VersionInfo resourceName="KeyValueMapOperations.GetSchemaDefinitions" version="SHA-512:2054382274d5f2e0463715ba1446520e0103f4e9b3ef661bf86ea1b982f341d6a0ae9fa3774498289de64d0f8e4e0077a2d54f71a7d610f105dbc41044430e6e"/>
+    </Policies>
+    <ProxyEndpoints>
+        <VersionInfo resourceName="default" version="SHA-512:f29d8d2e26277f9ec666a1913592b83b35d824aabea44828e3eb995b23d63e0b2c947ccc18391ece40b0c50cd52720ed65eb20d90f1293012cdfe7872fd03a3d"/>
+    </ProxyEndpoints>
+    <Resources>
+        <VersionInfo resourceName="java://edge-soap-validate-callout-1.0.0.jar" version="SHA-512:27e311e57e016c14be9eb23b4fc29eef0c0776b718f0336d4227a5055e6cc191050897a8edd91f9d95df9de57d8c552af933dc4492067c4c672fef5ba0d3becf"/>
+        <VersionInfo resourceName="jsc://schema-process.js" version="SHA-512:b98edeeac7b60eef57c3d00e8442c8818757f192e02fa3df17be7ba655c95f0e90078f4eef390faf671484edec5f8ad5fcdaf993067c6d60d9b8a6102c94ffe2"/>
+    </Resources>
+    <SharedFlows/>
+    <TargetEndpoints/>
+</Manifest>

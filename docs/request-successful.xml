@@ -1,0 +1,43 @@
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+    <SOAP-ENV:Header>
+        <v3:integrationHeader xmlns:v3="http://www.royalmailgroup.com/integration/core/V3">
+            <!--Optional:-->
+            <dateTime>2008-09-29T01:49:45</dateTime>
+            <!--Optional:-->
+            <version>1000.00</version>
+            <identification>
+                <!--Optional:-->
+                <endUserId>string</endUserId>
+                <!--Optional:-->
+                <clientId>*****</clientId>
+                <applicationId>appid123</applicationId>
+                <!--Optional:-->
+                <intermediaryId>intermid123</intermediaryId>
+                <transactionId>transid123</transactionId>
+            </identification>
+            <!--Optional:-->
+            <debugAudit>
+                <!--Optional:-->
+                <testFlag>true</testFlag>
+                <!--Optional:-->
+                <debugFlag>true</debugFlag>
+                <!--Optional:-->
+                <performanceFlag>true</performanceFlag>
+                <!--Optional:-->
+                <messageAuditFlag>true</messageAuditFlag>
+            </debugAudit>
+        </v3:integrationHeader>
+    </SOAP-ENV:Header>
+    <SOAP-ENV:Body>
+        <v2:getLocationsRequest xmlns:v2="http://www.royalmailgroup.com/API/LocalCollect/schema/V2.0">
+            <!--You have a CHOICE of the next 2 items at this level-->
+<!--            <postCode>string</postCode> -->
+            <geoLocation>
+                <latitude>1000.00</latitude>
+                <longitude>1000.00</longitude>
+            </geoLocation>
+            <!--Optional:-->
+            <radius>20</radius>
+        </v2:getLocationsRequest>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

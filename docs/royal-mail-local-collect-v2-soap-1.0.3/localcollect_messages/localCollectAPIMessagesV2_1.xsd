@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+################################################################################
+#	Description:			Local Collect Messages 3.0
+# 	Revision: 				
+#	Date: 					22/02/2016 
+################################################################################
+################################################################################
+#	History: 
+#  	Version			Date			Author				Description of Change 
+#  	v2.0			22/02/2016		Cliff Dias 			Initial version created
+#	v2.1			26/04/2017		Cliff Dias			Updated distance to decimal form integer
+################################################################################
+-->
+<xs:schema xmlns:int="http://www.royalmailgroup.com/integration/core/V3"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.royalmailgroup.com/API/LocalCollect/messages/V2.0"
+	xmlns:tns="http://www.royalmailgroup.com/API/LocalCollect/messages/V2.0"
+	xmlns:dt="http://www.royalmailgroup.com/cm/rmDatatypes/V1" 
+	xmlns:lc="http://www.royalmailgroup.com/API/LocalCollect/types/V2.0"
+	elementFormDefault="unqualified" attributeFormDefault="unqualified" version="3.0">
+
+	<xs:annotation>
+		<xs:appinfo>Local Collect Messages v 2.0</xs:appinfo>
+		<xs:documentation>
+		This schema file provides the messages that form part of the Local Collect API operations.
+		The file provides the Request, Response and Fault messages that are used to define the API SOAP specification  
+		</xs:documentation>
+	</xs:annotation>
+	<xs:import namespace="http://www.royalmailgroup.com/integration/core/V3"
+		schemaLocation="../rmg_commons/CommonIntegrationSchemaV3_0.xsd" />
+
+	<xs:import namespace="http://www.royalmailgroup.com/cm/rmDatatypes/V1"
+		schemaLocation="../rmg_commons/DatatypesV4_2.xsd" />
+
+	<xs:import namespace="http://www.royalmailgroup.com/API/LocalCollect/types/V2.0"
+		schemaLocation="../localcollect_types/localCollectAPITypesV2_1.xsd" />
+
+	<xs:complexType name="getLocalCollectLocationsRequest">
+		<xs:annotation>
+			<xs:documentation>The element represents the Local Collect request object. The request consists of choice of either a valid UK post code or a lat and long representing the search location.
+			The request allows the caller to restrict the look up by a search radius and a location type.
+			The search radius is the radius from the centre of the look up post code
+			The location type allows the retailer to restrict the data returned from the api. e.g. only return POL or EO data.  
+			</xs:documentation>
+		</xs:annotation>
+				
+		<xs:sequence>
+
+		
+			<xs:choice>
+			
+				<xs:element name="postCode" type="lc:postcode" />
+													
+				<xs:element name="geoLocation" type="lc:geoSpatialPosition" />
+
+			</xs:choice>
+			
+
+			<xs:element name="locationType" type="lc:locationType" minOccurs="0"
+				maxOccurs="1"/>
+
+				
+			<xs:element name="radius" type="lc:radius" minOccurs="0"
+				maxOccurs="1"/>
+
+	
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="getLocalCollectLocationsResponse">
+		<xs:annotation>
+			<xs:documentation>The element represents the Local Collect response object. The location response consists of 2 parts.
+			The first part is the integration footer consisting or errors/warnings
+			The second part consists of an array of address elements representing the local collect offices.
+			</xs:documentation>
+		</xs:annotation>	
+		<xs:sequence>
+
+		<xs:element name="locations" type="lc:locations" minOccurs="0"/>		
+		
+		<xs:element name="integrationFooter" type="int:integrationFooter" minOccurs="0"/>
+
+		
+
+		</xs:sequence>
+	</xs:complexType>
+
+</xs:schema>

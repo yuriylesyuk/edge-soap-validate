@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<KeyValueMapOperations async="false" continueOnError="false" enabled="true" name="KeyValueMapOperations.GetSchemaDefinitions" mapIdentifier="rm-schemas">
+    <Get assignTo="flow.soap.xml.1">
+        <Key>
+            <Parameter ref="flow.soap.content.1"/>
+        </Key>
+    </Get>
+    <Get assignTo="flow.soap.xml.2">
+        <Key>
+            <Parameter ref="flow.soap.content.2"/>
+        </Key>
+    </Get>
+    <Get assignTo="flow.soap.xml.3">
+        <Key>
+            <Parameter ref="flow.soap.content.3"/>
+        </Key>
+    </Get>
+    <Get assignTo="flow.soap.xml.4">
+        <Key>
+            <Parameter ref="flow.soap.content.4"/>
+        </Key>
+    </Get>
+    <Get assignTo="flow.soap.xml.5">
+        <Key>
+            <Parameter ref="flow.soap.content.5"/>
+        </Key>
+    </Get>
+    <Get assignTo="flow.soap.xml.6">
+        <Key>
+            <Parameter ref="flow.soap.content.6"/>
+        </Key>
+    </Get>
+    <Get assignTo="flow.soap.xml.7">
+        <Key>
+            <Parameter ref="flow.soap.content.7"/>
+        </Key>
+    </Get>
+    <Get assignTo="flow.soap.xml.8">
+        <Key>
+            <Parameter ref="flow.soap.content.8"/>
+        </Key>
+    </Get>
+    <Get assignTo="flow.soap.xml.9">
+        <Key>
+            <Parameter ref="flow.soap.content.9"/>
+        </Key>
+    </Get>
+    <Scope>environment</Scope>
+</KeyValueMapOperations>

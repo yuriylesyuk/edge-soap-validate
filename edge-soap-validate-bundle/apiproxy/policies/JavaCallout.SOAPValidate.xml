@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<JavaCallout async="false" continueOnError="false" enabled="true" name="JavaCallout.SOAPValidate">
+    <DisplayName>JavaCallout.SOAPValidate</DisplayName>
+    <Properties>
+        <Property name="wsdl">flow.soap.wsdl</Property>
+        <Property name="schemaprefix">flow.soap.schema.</Property>
+        <Property name="xmlprefix">flow.soap.xml.</Property>
+        <Property name="length">flow.soap.schemas.length</Property>
+    </Properties>
+    <ClassName>com.exco.xmlutils.SoapWsdlValidator</ClassName>
+    <ResourceURL>java://edge-soap-validate-callout-1.0.0.jar</ResourceURL>
+</JavaCallout>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<KeyValueMapOperations async="false" continueOnError="false" enabled="true" name="KeyValueMapOperations.GetSchemaDef" mapIdentifier="rm-messages">
+    <Get assignTo="flow.soap.schemadef">
+        <Key>
+            <Parameter ref="flow.soap.message"/>
+        </Key>
+    </Get>
+    <Scope>environment</Scope>
+</KeyValueMapOperations>

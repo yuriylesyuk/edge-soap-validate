@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="1" name="rm-localcollection">
+    <Basepaths>/rm-localcollection</Basepaths>
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1553678212943</CreatedAt>
+    <CreatedBy>paul.chlebek@extern.f-i.de</CreatedBy>
+    <Description></Description>
+    <DisplayName>rm-localcollection</DisplayName>
+    <LastModifiedAt>1553792763933</LastModifiedAt>
+    <LastModifiedBy>paul.chlebek@extern.f-i.de</LastModifiedBy>
+    <ManifestVersion>SHA-512:e1d6198af62cb77c3996c75834838a6be28337814eb513b5b0e4bde0c5b85d2b596f8cd7c6faa3f0aabc84bcd1aab88696643428f361e6594f530e55f28be5bd</ManifestVersion>
+    <Policies>
+        <Policy>Assign-Message-1</Policy>
+        <Policy>Assign-Message-2</Policy>
+        <Policy>JavaCallout.SOAPValidate</Policy>
+        <Policy>JavaScriptProcessSchemas</Policy>
+        <Policy>KeyValueMapOperations.GetSchemaDef</Policy>
+        <Policy>KeyValueMapOperations.GetSchemaDefinitions</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources>
+        <Resource>java://edge-soap-validate-callout-1.0.0.jar</Resource>
+        <Resource>jsc://schema-process.js</Resource>
+    </Resources>
+    <Spec></Spec>
+    <TargetServers/>
+    <TargetEndpoints/>
+</APIProxy>

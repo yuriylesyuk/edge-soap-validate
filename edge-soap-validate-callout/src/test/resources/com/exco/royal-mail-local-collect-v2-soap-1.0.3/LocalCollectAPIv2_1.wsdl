@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+################################################################################
+#	Description:			Local Collect WSDL 2.0
+# 	Revision: 				
+#	Date: 					22/02/2016 
+################################################################################
+################################################################################
+#	History: 
+#  	Version			Date			Author							Description of Change 
+#  	v2.0			22/02/2016		Cliff Dias/Mark Cornforth 		Initial version created
+#   v2.1            26/04/2017      Cliff Dias						Updated distance from integer to decimal
+################################################################################
+-->
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.royalmailgroup.com/API/LocalCollect/V2.0" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:messages="http://www.royalmailgroup.com/API/LocalCollect/messages/V2.0" xmlns:local_collect_schema="http://www.royalmailgroup.com/API/LocalCollect/schema/V2.0" xmlns:int="http://www.royalmailgroup.com/integration/core/V3" name="LocalCollectAPIv2_0" targetNamespace="http://www.royalmailgroup.com/API/LocalCollect/V2.0">
+
+	<wsdl:documentation>
+		Version 2.0
+	
+		This WSDL provides the SOAP specification for the Local Collect V2.0 API.
+		This API simplifies the Local Collect API by removing the need to perform the Reservation call. 	
+	</wsdl:documentation>
+
+	<wsdl:types>
+		<xsd:schema elementFormDefault="qualified" attributeFormDefault="qualified" targetNamespace="http://www.royalmailgroup.com/API/LocalCollect/schema/V2.0">
+			<xsd:import namespace="http://www.royalmailgroup.com/API/LocalCollect/messages/V2.0" schemaLocation="./localcollect_messages/localCollectAPIMessagesV2_1.xsd"/>
+			<xsd:import namespace="http://www.royalmailgroup.com/integration/core/V3" schemaLocation="./rmg_commons/CommonIntegrationSchemaV3_0.xsd"/>			
+			<xsd:element name="getLocationsRequest" type="messages:getLocalCollectLocationsRequest"/>
+			<xsd:element name="getLocationsResponse" type="messages:getLocalCollectLocationsResponse"/>
+			<xsd:element name="integrationHeader" type="int:integrationHeader"/>
+			<xsd:element name="exceptionDetails" type="int:exceptionDetails"/>			
+		</xsd:schema>
+			
+	</wsdl:types>
+
+	<wsdl:message name="getLocalCollectLocationsIn">
+		<wsdl:part element="local_collect_schema:getLocationsRequest" name="request"/>
+	</wsdl:message>
+	
+	<wsdl:message name="getLocalCollectLocationsOut">
+		<wsdl:part element="local_collect_schema:getLocationsResponse" name="response"/>
+	</wsdl:message>
+
+	<wsdl:message name="integrationHeader">
+		<wsdl:part element="int:integrationHeader" name="request_header"/>
+	</wsdl:message>
+
+	<wsdl:message name="getLocalCollectLocationsFault">
+		<!-- wsdl:part element="getLocationsFault" name="fault" /-->
+		<wsdl:part element="int:exceptionDetails" name="fault"/> 
+	</wsdl:message>
+	
+	<wsdl:portType name="LocalCollectInterfacev2_0">
+		<wsdl:operation name="getLocations">
+			<wsdl:input message="tns:getLocalCollectLocationsIn"/>
+			<wsdl:output message="tns:getLocalCollectLocationsOut"/>
+			<wsdl:fault name="getLocalCollectFault" message="tns:getLocalCollectLocationsFault"/>		 
+		</wsdl:operation>
+	</wsdl:portType>
+	
+	
+	<wsdl:binding name="LocalCollectBindingv2_0" type="tns:LocalCollectInterfacev2_0">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="getLocations">
+			<soap:operation soapAction="http://royalmail.com/LocalCollectInterfacev3_0/getLocalCollectLocations"/>
+			<wsdl:input>
+				<soap:header use="literal" part="request_header" message="tns:integrationHeader"/>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:header use="literal" part="request_header" message="tns:integrationHeader"/>			
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="getLocalCollectFault">
+				<soap:fault name="getLocalCollectFault" use="literal"/>
+			</wsdl:fault>			
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="LocalCollectServicev2_0">
+		<wsdl:port binding="tns:LocalCollectBindingv2_0" name="LocalCollectPortv2_0">
+			<soap:address location="https://api.royalmail.net/localcollect/v2"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

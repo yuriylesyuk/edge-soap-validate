@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+################################################################################
+#	Description:			Local Collect Types 2.0
+# 	Revision: 				
+#	Date: 					22/02/2016 
+################################################################################
+################################################################################
+#	History: 
+#  	Version			Date			Author				Description of Change 
+#  	v2.0			22/02/2016		Cliff Dias 			Initial version created
+#	v2.1			26/04/2017		Cliff Dias			Updated distance to decimal from integer
+################################################################################
+-->
+
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.royalmailgroup.com/API/LocalCollect/types/V2.0"
+	xmlns:int="http://www.royalmailgroup.com/integration/core/V3"
+	xmlns:tns="http://www.royalmailgroup.com/API/LocalCollect/types/V2.0"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:dt="http://www.royalmailgroup.com/cm/rmDatatypes/V1"
+	elementFormDefault="unqualified" attributeFormDefault="unqualified">
+
+	<xs:annotation>
+		<xs:appinfo>Local Collect Types v 3.0</xs:appinfo>
+		<xs:documentation>
+		This schema file provides the types that are used in the messages that make up the Local Collect API.
+		</xs:documentation>
+	</xs:annotation>
+	
+	<xs:import namespace="http://www.royalmailgroup.com/integration/core/V3"
+		schemaLocation="../rmg_commons/CommonIntegrationSchemaV3_0.xsd" />
+	
+
+	<xs:import namespace="http://www.royalmailgroup.com/cm/rmDatatypes/V1"
+		schemaLocation="../rmg_commons/DatatypesV4_2.xsd" />
+
+
+	<!-- A valid UK post code format. Does not validate that the post code actually 
+		exists -->
+	<xs:simpleType name="postcode">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="5" />
+			<xs:maxLength value="8" />
+			<xs:pattern value="[a-zA-Z][0-9a-zA-Z]+\s?[0-9a-zA-Z]*" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- Radius is the search radius and restricted to a maximum of 20 miles -->
+	<xs:simpleType name="radius">
+		<xs:restriction base="xs:integer">
+			<xs:minExclusive value="0" />
+			<xs:maxInclusive value="20" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- The latitude and longitude -->
+	<xs:complexType name="geoSpatialPosition">
+		<xs:sequence>
+			<xs:element name="latitude" type="dt:geoSpatial" />
+			<xs:element name="longitude" type="dt:geoSpatial" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="locations">
+		<xs:sequence>
+			<xs:element name="location" type="tns:address" minOccurs="0" maxOccurs="20"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<!-- Type of location e.g. POL Branch, EO, locker box -->
+	<xs:simpleType name="locationType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Post Office" />
+			<xs:enumeration value="Enquiry Office" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- Enumeration for the days of the week  -->
+	<xs:simpleType name="dayOfWeek">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Monday" />
+			<xs:enumeration value="Tuesday" />
+			<xs:enumeration value="Wednesday" />
+			<xs:enumeration value="Thursday" />
+			<xs:enumeration value="Friday" />
+			<xs:enumeration value="Saturday" />
+			<xs:enumeration value="Sunday" />
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<!-- Address Details -->
+	<xs:complexType name="address">
+		<xs:annotation>
+			<xs:documentation>
+			</xs:documentation>
+		</xs:annotation>	
+	
+		<xs:sequence>
+			<xs:element name="organisationName" type="dt:longName" />
+			<xs:element name="locationName" type="dt:longName" />
+			<xs:element name="addressLine1" type="dt:description" />
+			<xs:element name="addressLine2" type="dt:description" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="addressLine3" type="dt:description" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="city" type="dt:shortName" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="county" type="dt:shortName" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="postcode" type="tns:postcode" />
+			<!-- <xs:element name="country" type="dt:shortName"/> -->
+			<xs:element name="openingHours" type="tns:openingTime" minOccurs="1" maxOccurs="7"/>
+			<xs:element name="geoLocation" type="tns:geoSpatialPosition" />
+			<xs:element name="distance" type="xs:decimal" />
+			<xs:element name="facilities" type="tns:facilities" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="locationType" type="tns:locationType"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="openingTime">
+		<xs:sequence>
+			<xs:element name="dayOfWeek" type="tns:dayOfWeek"/>
+			<xs:element name="openingTime" type="xs:time"/>
+			<xs:element name="closingTime" type="xs:time"/>
+			<xs:element name="lunchHours" type="tns:lunchTime" minOccurs=" 0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="lunchTime">
+		<xs:sequence>
+			<xs:element name="lunchClosingTime" type="xs:time"/>
+			<xs:element name="lunchOpeningTime" type="xs:time"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="exceptionDetail">
+		<xs:all>
+			<xs:element name="errorCode" type="dt:shortName"/>
+			<xs:element name="errorCause" type="dt:shortDescription"/>
+			<xs:element name="errorResolution" type="dt:description"/>
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="facilities">
+		<xs:sequence>
+			<xs:element name="customerParkingIndicator" type="xs:boolean"/>
+			<xs:element name="disabilityIndicator" type="xs:boolean"/>
+		</xs:sequence>
+	</xs:complexType>
+</schema>
