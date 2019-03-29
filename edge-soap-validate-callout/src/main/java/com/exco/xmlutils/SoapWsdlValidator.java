@@ -125,7 +125,7 @@ public class SoapWsdlValidator implements Execution {
 
             try{
 
-            	schemasCollection = getSchemas( schemas.get(  "file:/" + wsdl ) );
+            	schemasCollection = getSchemas( schemas.get(  wsdl ) );
 
             }catch( ParserConfigurationException e) {
             	throw new RuntimeException( e );
@@ -216,7 +216,7 @@ messageContext.setVariable( "X-DEBUG-msg"+String.format( "%d", i ),"file:/" + (S
 			
 						
 messageContext.setVariable( "X-DEBUG-msg", "hereBEF" ); 	    	
-			validate( soap, wsdl, schemas );
+			validate( soap, "file:/" + wsdl, schemas );
 messageContext.setVariable( "X-DEBUG-msg", "hereAFT" ); 	    	
 							
 			return ExecutionResult.SUCCESS;

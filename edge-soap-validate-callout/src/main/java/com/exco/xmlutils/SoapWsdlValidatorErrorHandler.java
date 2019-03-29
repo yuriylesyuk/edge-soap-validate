@@ -15,19 +15,32 @@ public class SoapWsdlValidatorErrorHandler implements ErrorHandler {
 		exceptions.add( error );
 	}
 	
+	private String formatException( SAXParseException e ) {
+		
+		String errorMessage = "[" 
+			+ e.getLineNumber()
+			+ ", "
+			+ e.getColumnNumber()
+			+ "] "
+			+ e.getMessage()
+			+ "\n";			
+		
+		return errorMessage;
+	}
+	
     public void warning(SAXParseException e) throws SAXException {
     	
-    	addException( "WARNING: " + e.getMessage() );
+    	addException( "WARNING: " + formatException( e ) );
     }
 
     public void error(SAXParseException e) throws SAXException {
 
-    	addException( "ERROR: " + e.getMessage() );
+    	addException( "ERROR: " + formatException( e ) );
     }
 
     public void fatalError(SAXParseException e) throws SAXException {
     	
-    	addException( "FATALERROR: " + e.getMessage() );
+    	addException( "FATALERROR: " + formatException( e ) );
     }
     
     public boolean isValid() {
